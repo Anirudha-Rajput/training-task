@@ -20,10 +20,14 @@ function Signup() {
         password
       });
 
-      alert("Registration successful");
+      alert("Registration successful! Please check your email to verify your account.");
 
     } catch (error) {
-      alert("Registration failed");
+     if(error.response && error.response.data && error.response.data.message) {
+        alert(error.response.data.message);
+      } else {
+        alert("Registration failed. Please try again.");
+      }
     }
   };
 

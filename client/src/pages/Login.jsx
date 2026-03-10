@@ -24,7 +24,11 @@ function Login() {
       navigate("/profile");
 
     } catch (error) {
-      alert("Login Failed");
+      if(error.response && error.response.data && error.response.data.message) {
+        alert(error.response.data.message);
+      } else {
+        alert("Login failed. Please try again.");
+      }
     }
   };
 
